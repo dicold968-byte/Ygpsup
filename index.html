@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Minor — Блогер | УГП Универ глазами подростка</title>
+  <title>Minor.live — Видеокреатор | УГП Универ глазами подростка</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
@@ -65,19 +65,21 @@
     }
     .nav-btn {
       font-family: var(--font-accent);
-      font-size: 1.1em;
+      font-size: 1.15em;
       letter-spacing: 1px;
-      background: transparent;
+      background: #181924;
       border: var(--card-border);
       color: #fff;
-      padding: 0.7em 2em;
+      padding: 0.85em 2.2em;
       border-radius: 16px;
       cursor: pointer;
       box-shadow: 0 0 12px #00ffd055;
-      transition: border-color 0.3s, box-shadow 0.3s, background 0.3s;
+      transition: border-color 0.3s, box-shadow 0.3s, background 0.3s, color 0.3s;
       outline: none;
       position: relative;
       overflow: hidden;
+      font-weight: 700;
+      z-index: 1;
     }
     .nav-btn:before {
       content: "";
@@ -85,14 +87,22 @@
       top:0;left:0;width:100%;height:100%;
       background: var(--main-rgb);
       background-size: 200% 200%;
-      opacity: 0.2;
+      opacity: 0.17;
       z-index: 0;
       transition: opacity 0.3s;
+      pointer-events: none;
     }
     .nav-btn:hover, .nav-btn.active {
       border-color: #00ffd0;
       box-shadow: 0 0 32px #00ffd0cc;
-      background: rgba(0,255,208,0.06);
+      background: rgba(0,255,208,0.13);
+      color: #00ffd0;
+    }
+    .nav-btn span {
+      position: relative;
+      z-index: 1;
+      background: none;
+      color: inherit;
     }
     section {
       max-width: 800px;
@@ -132,8 +142,8 @@
       text-shadow: 0 0 8px #00ffd0;
     }
     .bio {
-      font-size: 1.25em;
-      line-height: 1.6;
+      font-size: 1.15em;
+      line-height: 1.7;
       margin-bottom: 1.5em;
       color: #fff;
       animation: fadeIn 2s;
@@ -159,15 +169,16 @@
       margin-bottom: 0.5em;
       box-shadow: 0 0 18px #0099ff33;
       cursor: pointer;
-      transition: background 0.3s, border 0.3s, box-shadow 0.3s;
+      transition: background 0.3s, border 0.3s, box-shadow 0.3s, color 0.3s;
       text-decoration: none;
       position: relative;
       overflow: hidden;
+      font-weight: 700;
     }
     .social-btn:hover {
       background: var(--main-rgb);
       background-size: 300% 300%;
-      color: #fff;
+      color: #ffcb00;
       box-shadow: 0 0 36px #ff00cc88;
       border-color: #ff00cc;
     }
@@ -214,10 +225,12 @@
       margin-top: 1em;
       position: relative;
       overflow: hidden;
+      font-weight: 700;
     }
     .casting-btn:hover {
       box-shadow: 0 0 44px #ffcb00ee;
       border-color: #00ffd0;
+      color: #00ffd0;
     }
     .casting-success {
       color: #00ffd0;
@@ -278,13 +291,15 @@
       padding: 0.8em 2em;
       cursor: pointer;
       box-shadow: 0 0 24px #ff00cc88;
-      transition: box-shadow 0.3s, border 0.3s;
+      transition: box-shadow 0.3s, border 0.3s, color 0.3s;
       position: relative;
       overflow: hidden;
+      font-weight: 700;
     }
     .login-btn:hover {
       box-shadow: 0 0 44px #0099ffcc;
       border-color: #00ffd0;
+      color: #00ffd0;
     }
     .login-success {
       color: #00ffd0;
@@ -299,41 +314,42 @@
       .bio-img {width: 120px; height: 120px;}
       .title {font-size: 2em;}
       .subtitle {font-size: 1em;}
+      .nav-btn {font-size: 1em; padding: 0.7em 1em;}
     }
   </style>
 </head>
 <body>
   <div class="rgb-bg"></div>
   <header>
-    <h1 class="title">MINOR</h1>
-    <div class="subtitle">Блогер • 200k YouTube • УГП Универ глазами подростка</div>
+    <h1 class="title">Minor.live</h1>
+    <div class="subtitle">Видеокреатор • 200k YouTube • УГП Универ глазами подростка</div>
     <nav>
-      <button class="nav-btn active" data-tab="main">Главная</button>
-      <button class="nav-btn" data-tab="socials">Соц сети</button>
-      <button class="nav-btn" data-tab="casting">Кастинг</button>
-      <button class="nav-btn" data-tab="login">Вход</button>
+      <button class="nav-btn active" data-tab="main"><span>Главная</span></button>
+      <button class="nav-btn" data-tab="socials"><span>Соц сети</span></button>
+      <button class="nav-btn" data-tab="casting"><span>Кастинг</span></button>
+      <button class="nav-btn" data-tab="login"><span>Вход</span></button>
     </nav>
   </header>
   <!-- Главная -->
   <section id="main" class="active">
-    <img src="minor.png" alt="Minor" class="bio-img">
+    <img src="minor.png" alt="Minor.live" class="bio-img">
     <h2>Биография</h2>
     <div class="bio">
-      Minor — российский блогер, ведущий YouTube-канал с более чем 200&nbsp;тысячами подписчиков. 
-      Известен как главный герой проекта “УГП Универ глазами подростка”, где раскрывает студенческую жизнь и показывает университет изнутри глазами современных молодых людей. 
-      <br><br>
-      Minor не просто контент-мейкер — он вдохновляет подростков на развитие, делится лайфхаками, юмором и мотивацией. 
-      Его видео — это микс драйва, искренности и настоящих эмоций.
+      Minor.live — видеокреатор и продюсер, чья работа на платформе YouTube собрала более 200,000 подписчиков. Его контент отличается продуманной подачей, актуальностью тем и вниманием к деталям, что делает его одним из заметных представителей молодёжного медиа-пространства.<br><br>
+      Ключевым проектом Minor.live является авторский сериал «УГП — Универ глазами подростка», который получил признание как среди зрителей, так и среди образовательных и творческих сообществ. Сериал основан на реальных переживаниях подростков и студентов, затрагивает важные социальные и личные темы — от самоопределения и межличностных конфликтов до адаптации в новой среде.<br><br>
+      Формат сериала сочетает элементы драмы, комедии и наблюдательного юмора, создавая живую и достоверную картину современной молодёжной жизни. Каждый эпизод — это не просто история, а попытка найти решение, показать путь, объединить героев в команду, где коллективная поддержка становится ключом к преодолению трудностей.<br><br>
+      Некоторые зрители сравнивают «УГП» с фанфик-сообществами — благодаря эмоциональной глубине, близости персонажей к реальности и способности вызывать отклик у аудитории. Однако проект Minor.live отличается профессиональной постановкой, сценарной структурой и визуальной эстетикой, что выводит его за рамки любительского контента.<br><br>
+      Minor.live продолжает развивать серию, расширять тематику и вовлекать новых участников, стремясь создать платформу, где голос молодёжи звучит честно, открыто и с уважением к зрителю.
     </div>
   </section>
   <!-- Соц сети -->
   <section id="socials">
     <h2>Соц сети</h2>
     <div class="socials">
-      <a class="social-btn" href="https://youtube.com/" target="_blank"><img src="https://img.icons8.com/color/48/youtube-play.png" alt="" width="24">YouTube</a>
-      <a class="social-btn" href="https://t.me/" target="_blank"><img src="https://img.icons8.com/color/48/telegram-app.png" alt="" width="24">Telegram</a>
-      <a class="social-btn" href="https://vk.com/" target="_blank"><img src="https://img.icons8.com/color/48/vk-com.png" alt="" width="24">VK</a>
-      <a class="social-btn" href="https://instagram.com/" target="_blank"><img src="https://img.icons8.com/color/48/instagram-new.png" alt="" width="24">Instagram</a>
+      <a class="social-btn" href="https://youtube.com/" target="_blank"><img src="https://img.icons8.com/color/48/youtube-play.png" alt="" width="24"><span>YouTube</span></a>
+      <a class="social-btn" href="https://t.me/" target="_blank"><img src="https://img.icons8.com/color/48/telegram-app.png" alt="" width="24"><span>Telegram</span></a>
+      <a class="social-btn" href="https://vk.com/" target="_blank"><img src="https://img.icons8.com/color/48/vk-com.png" alt="" width="24"><span>VK</span></a>
+      <a class="social-btn" href="https://instagram.com/" target="_blank"><img src="https://img.icons8.com/color/48/instagram-new.png" alt="" width="24"><span>Instagram</span></a>
     </div>
   </section>
   <!-- Кастинг -->
@@ -352,7 +368,7 @@
       <label class="casting-q">Какие темы тебе интересны для съёмок?</label>
       <input type="text" class="casting-input" name="topics">
 
-      <button type="submit" class="casting-btn">Отправить заявку</button>
+      <button type="submit" class="casting-btn"><span>Отправить заявку</span></button>
       <div id="castingSuccess" class="casting-success hide">Спасибо! Ваша заявка отправлена.</div>
     </form>
   </section>
@@ -362,7 +378,7 @@
     <form class="login-form" id="loginForm">
       <input type="email" class="login-input" name="email" placeholder="Email" required>
       <input type="password" class="login-input" name="password" placeholder="Пароль" required>
-      <button type="submit" class="login-btn">Войти</button>
+      <button type="submit" class="login-btn"><span>Войти</span></button>
       <div id="loginSuccess" class="login-success hide">Вход выполнен!</div>
     </form>
   </section>
