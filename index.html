@@ -62,6 +62,7 @@
       display: flex;
       justify-content: center;
       gap: 2em;
+      flex-wrap: wrap;
     }
     .nav-btn {
       font-family: var(--font-accent);
@@ -80,6 +81,10 @@
       overflow: hidden;
       font-weight: 700;
       z-index: 1;
+      min-width: 0;
+      width: auto;
+      white-space: nowrap;
+      box-sizing: border-box;
     }
     .nav-btn:before {
       content: "";
@@ -307,7 +312,83 @@
       font-size: 1.1em;
       margin-top: 0.6em;
     }
-    /* Мелкие */
+    /* Админ панель */
+    .admin-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+      margin-top: 2em;
+      max-width: 350px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .admin-input {
+      padding: 0.7em 1em;
+      font-size: 1em;
+      border-radius: 12px;
+      border: var(--card-border);
+      background: rgba(24,24,36,0.97);
+      color: #fff;
+      font-family: var(--font-main);
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    .admin-input:focus {
+      border-color: #ffcb00;
+      box-shadow: 0 0 12px #ffcb00cc;
+    }
+    .admin-btn {
+      font-family: var(--font-accent);
+      font-size: 1.1em;
+      color: #fff;
+      background: var(--main-rgb);
+      background-size: 300% 300%;
+      border: 2px solid #ffcb00;
+      border-radius: 14px;
+      padding: 0.8em 2em;
+      cursor: pointer;
+      box-shadow: 0 0 24px #ffcb00aa;
+      transition: box-shadow 0.3s, border 0.3s;
+      margin-top: 1em;
+      position: relative;
+      overflow: hidden;
+      font-weight: 700;
+    }
+    .admin-btn:hover {
+      box-shadow: 0 0 44px #ffcb00ee;
+      border-color: #00ffd0;
+      color: #00ffd0;
+    }
+    .admin-success {
+      color: #00ffd0;
+      font-family: var(--font-accent);
+      font-size: 1.1em;
+      margin-top: 0.6em;
+      text-align: center;
+    }
+    .admin-list {
+      margin-top: 2em;
+      border-radius: 10px;
+      background: rgba(0,255,208,0.09);
+      border: 2px solid #00ffd044;
+      padding: 1em;
+      box-shadow: 0 0 18px #0099ff33;
+    }
+    .admin-list h3 {
+      font-family: var(--font-accent);
+      color: #ffcb00;
+      margin: 0 0 1em 0;
+      font-size: 1.3em;
+      text-align: center;
+    }
+    .admin-casting {
+      margin-bottom: 1.2em;
+      padding: 1em;
+      border-radius: 8px;
+      background: rgba(24,24,36,0.97);
+      border: 1px solid #ffcb00;
+      box-shadow: 0 0 10px #00ffd044;
+    }
     .hide {display: none;}
     @media (max-width: 600px) {
       section {padding: 1em;}
@@ -315,6 +396,7 @@
       .title {font-size: 2em;}
       .subtitle {font-size: 1em;}
       .nav-btn {font-size: 1em; padding: 0.7em 1em;}
+      .admin-list {padding: 0.5em;}
     }
   </style>
 </head>
@@ -328,6 +410,7 @@
       <button class="nav-btn" data-tab="socials"><span>Соц сети</span></button>
       <button class="nav-btn" data-tab="casting"><span>Кастинг</span></button>
       <button class="nav-btn" data-tab="login"><span>Вход</span></button>
+      <button class="nav-btn" data-tab="admin"><span>Админка</span></button>
     </nav>
   </header>
   <!-- Главная -->
@@ -335,11 +418,11 @@
     <img src="minor.png" alt="Minor.live" class="bio-img">
     <h2>Биография</h2>
     <div class="bio">
-      Minor.live — видеокреатор и продюсер, чья работа на платформе YouTube собрала более 200,000 подписчиков. Его контент отличается продуманной подачей, актуальностью тем и вниманием к деталям, что делает его одним из заметных представителей молодёжного медиа-пространства.<br><br>
-      Ключевым проектом Minor.live является авторский сериал «УГП — Универ глазами подростка», который получил признание как среди зрителей, так и среди образовательных и творческих сообществ. Сериал основан на реальных переживаниях подростков и студентов, затрагивает важные социальные и личные темы — от самоопределения и межличностных конфликтов до адаптации в новой среде.<br><br>
-      Формат сериала сочетает элементы драмы, комедии и наблюдательного юмора, создавая живую и достоверную картину современной молодёжной жизни. Каждый эпизод — это не просто история, а попытка найти решение, показать путь, объединить героев в команду, где коллективная поддержка становится ключом к преодолению трудностей.<br><br>
-      Некоторые зрители сравнивают «УГП» с фанфик-сообществами — благодаря эмоциональной глубине, близости персонажей к реальности и способности вызывать отклик у аудитории. Однако проект Minor.live отличается профессиональной постановкой, сценарной структурой и визуальной эстетикой, что выводит его за рамки любительского контента.<br><br>
-      Minor.live продолжает развивать серию, расширять тематику и вовлекать новых участников, стремясь создать платформу, где голос молодёжи звучит честно, открыто и с уважением к зрителю.
+      Minor.live — видеокреатор и продюсер, чья работа на платформе YouTube собрала более 200,000 подписчиков. Его контент �[...]
+      Ключевым проектом Minor.live является авторский сериал «УГП — Универ глазами подростка», который получил при�[...]
+      Формат сериала сочетает элементы драмы, комедии и наблюдательного юмора, создавая живую и достоверную ка�[...]
+      Некоторые зрители сравнивают «УГП» с фанфик-сообществами — благодаря эмоциональной глубине, близости пе[...]
+      Minor.live продолжает развивать серию, расширять тематику и вовлекать новых участников, стремясь создать плат[...]
     </div>
   </section>
   <!-- Соц сети -->
@@ -381,6 +464,20 @@
       <button type="submit" class="login-btn"><span>Войти</span></button>
       <div id="loginSuccess" class="login-success hide">Вход выполнен!</div>
     </form>
+  </section>
+  <!-- Админка -->
+  <section id="admin">
+    <h2>Админ панель</h2>
+    <form class="admin-form" id="adminForm">
+      <input type="password" class="admin-input" id="adminToken" placeholder="Введите токен" required>
+      <button type="submit" class="admin-btn"><span>Войти</span></button>
+      <div id="adminSuccess" class="admin-success hide">Вход в админ-панель выполнен!</div>
+      <div id="adminError" class="admin-success hide" style="color:#ff00cc;">Неверный токен!</div>
+    </form>
+    <div id="adminList" class="admin-list hide">
+      <h3>Заявки с кастинга</h3>
+      <div id="adminCastings"></div>
+    </div>
   </section>
   <script>
     // Навигация по вкладкам
@@ -427,6 +524,67 @@
         this.reset();
       } else {
         alert('Аккаунт не найден. Сначала отправьте заявку на кастинг.');
+      }
+    });
+
+    // ---- Админ панель ----
+    function renderAdminCastings() {
+      const adminCastings = document.getElementById('adminCastings');
+      let castings = JSON.parse(localStorage.getItem('castings') || '[]');
+      adminCastings.innerHTML = '';
+      if (castings.length === 0) {
+        adminCastings.innerHTML = '<div style="text-align:center;color:#ffcb00;">Заявок нет.</div>';
+        return;
+      }
+      castings.forEach((c, idx) => {
+        const el = document.createElement('div');
+        el.className = 'admin-casting';
+        el.innerHTML = `
+          <strong>Никнейм:</strong> ${c.nickname} <br>
+          <strong>Email:</strong> ${c.email} <br>
+          <strong>О себе:</strong> ${c.about} <br>
+          <strong>Темы:</strong> ${c.topics} <br>
+          <button class="approve-btn" data-idx="${idx}" style="margin-top:1em;background:#00ff80;color:#181924;border:none;border-radius:8px;padding:0.5em 1.2em;font-family:'Orbitron';font-weight:700;cursor:pointer;">Одобрить</button>
+          <button class="decline-btn" data-idx="${idx}" style="margin-top:1em;margin-left:1em;background:#ff0055;color:#fff;border:none;border-radius:8px;padding:0.5em 1.2em;font-family:'Orbitron';font-weight:700;cursor:pointer;">Отклонить</button>
+        `;
+        adminCastings.appendChild(el);
+      });
+      // Навесить обработчики
+      document.querySelectorAll('.approve-btn').forEach(btn => {
+        btn.onclick = function() {
+          let i = +this.dataset.idx;
+          let castings = JSON.parse(localStorage.getItem('castings') || '[]');
+          castings.splice(i, 1);
+          localStorage.setItem('castings', JSON.stringify(castings));
+          renderAdminCastings();
+          alert('Заявка одобрена!');
+        };
+      });
+      document.querySelectorAll('.decline-btn').forEach(btn => {
+        btn.onclick = function() {
+          let i = +this.dataset.idx;
+          let castings = JSON.parse(localStorage.getItem('castings') || '[]');
+          castings.splice(i, 1);
+          localStorage.setItem('castings', JSON.stringify(castings));
+          renderAdminCastings();
+          alert('Заявка отклонена!');
+        };
+      });
+    }
+
+    document.getElementById('adminForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      let token = document.getElementById('adminToken').value;
+      if(token === '9f3a7c2d8e4b1a6f0d9c3e7b5a2f8d6c1e0b9a7f') {
+        document.getElementById('adminSuccess').classList.remove('hide');
+        document.getElementById('adminError').classList.add('hide');
+        setTimeout(()=>document.getElementById('adminSuccess').classList.add('hide'), 2000);
+        this.reset();
+        document.getElementById('adminList').classList.remove('hide');
+        renderAdminCastings();
+      } else {
+        document.getElementById('adminError').classList.remove('hide');
+        setTimeout(()=>document.getElementById('adminError').classList.add('hide'), 2000);
       }
     });
   </script>
