@@ -2,10 +2,417 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Тестовая страница GitHub Pages</title>
+  <title>Minor — Блогер | УГП Универ глазами подростка</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --main-rgb: linear-gradient(90deg, #00ffd0, #0099ff, #ff00cc, #ffcb00, #00ffd0);
+      --bg-dark: #181924;
+      --font-main: 'Montserrat', Arial, sans-serif;
+      --font-accent: 'Orbitron', Arial, sans-serif;
+      --card-border: 2px solid #fff9;
+    }
+    body {
+      margin: 0;
+      background: var(--bg-dark);
+      color: #fff;
+      font-family: var(--font-main);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    header {
+      background: var(--main-rgb);
+      background-size: 400% 400%;
+      animation: rgbMove 8s linear infinite;
+      padding: 2em 0 1em 0;
+      text-align: center;
+      box-shadow: 0 4px 24px #00ffd088;
+    }
+    @keyframes rgbMove {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+    .title {
+      font-family: var(--font-accent);
+      font-size: 2.8em;
+      margin: 0;
+      letter-spacing: 2px;
+      text-shadow: 0 0 24px #00ffd0cc;
+      animation: fadeInDown 1.2s;
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-50px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    .subtitle {
+      font-size: 1.2em;
+      color: #ffcb00;
+      margin-bottom: 1em;
+      animation: fadeIn 2s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1;}
+    }
+    nav {
+      margin: 2em auto 1em auto;
+      display: flex;
+      justify-content: center;
+      gap: 2em;
+    }
+    .nav-btn {
+      font-family: var(--font-accent);
+      font-size: 1.1em;
+      letter-spacing: 1px;
+      background: transparent;
+      border: var(--card-border);
+      color: #fff;
+      padding: 0.7em 2em;
+      border-radius: 16px;
+      cursor: pointer;
+      box-shadow: 0 0 12px #00ffd055;
+      transition: border-color 0.3s, box-shadow 0.3s, background 0.3s;
+      outline: none;
+      position: relative;
+      overflow: hidden;
+    }
+    .nav-btn:before {
+      content: "";
+      position: absolute;
+      top:0;left:0;width:100%;height:100%;
+      background: var(--main-rgb);
+      background-size: 200% 200%;
+      opacity: 0.2;
+      z-index: 0;
+      transition: opacity 0.3s;
+    }
+    .nav-btn:hover, .nav-btn.active {
+      border-color: #00ffd0;
+      box-shadow: 0 0 32px #00ffd0cc;
+      background: rgba(0,255,208,0.06);
+    }
+    section {
+      max-width: 800px;
+      margin: 2em auto;
+      padding: 2em;
+      background: rgba(30,32,50,0.85);
+      border-radius: 24px;
+      border: 2px solid #00ffd044;
+      box-shadow: 0 2px 32px #00ffd044;
+      display: none;
+      animation: fadeIn 1s;
+    }
+    section.active {
+      display: block;
+    }
+    .bio-img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 0 36px #00ffd0cc, 0 0 8px #fff;
+      border: 4px solid #ffcb00;
+      margin-bottom: 1em;
+      animation: picPulse 1.5s infinite alternate;
+    }
+    @keyframes picPulse {
+      0% {transform: scale(1);}
+      100% {transform: scale(1.04);}
+    }
+    h2 {
+      font-family: var(--font-accent);
+      font-size: 2em;
+      letter-spacing: 1px;
+      color: #00ffd0;
+      margin-top: 0;
+      margin-bottom: 0.4em;
+      text-shadow: 0 0 8px #00ffd0;
+    }
+    .bio {
+      font-size: 1.25em;
+      line-height: 1.6;
+      margin-bottom: 1.5em;
+      color: #fff;
+      animation: fadeIn 2s;
+    }
+    .socials {
+      display: flex;
+      gap: 2em;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 1em;
+    }
+    .social-btn {
+      border: var(--card-border);
+      border-radius: 14px;
+      padding: 0.6em 1.5em;
+      background: rgba(0,255,208,0.09);
+      color: #fff;
+      font-family: var(--font-accent);
+      font-size: 1.07em;
+      display: flex;
+      align-items: center;
+      gap: 0.6em;
+      margin-bottom: 0.5em;
+      box-shadow: 0 0 18px #0099ff33;
+      cursor: pointer;
+      transition: background 0.3s, border 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+    }
+    .social-btn:hover {
+      background: var(--main-rgb);
+      background-size: 300% 300%;
+      color: #fff;
+      box-shadow: 0 0 36px #ff00cc88;
+      border-color: #ff00cc;
+    }
+    /* Кастинг */
+    .casting-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.3em;
+      margin-top: 1.5em;
+    }
+    .casting-q {
+      font-size: 1.1em;
+      margin-bottom: 0.3em;
+      font-family: var(--font-accent);
+      color: #ffcb00;
+    }
+    .casting-input, .casting-textarea {
+      padding: 0.7em 1em;
+      font-size: 1em;
+      border-radius: 12px;
+      border: var(--card-border);
+      background: rgba(24,24,36,0.97);
+      color: #fff;
+      font-family: var(--font-main);
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    .casting-input:focus, .casting-textarea:focus {
+      border-color: #00ffd0;
+      box-shadow: 0 0 12px #00ffd0cc;
+    }
+    .casting-btn {
+      font-family: var(--font-accent);
+      font-size: 1.1em;
+      color: #fff;
+      background: var(--main-rgb);
+      background-size: 300% 300%;
+      border: 2px solid #ffcb00;
+      border-radius: 14px;
+      padding: 0.8em 2em;
+      cursor: pointer;
+      box-shadow: 0 0 24px #ffcb00aa;
+      transition: box-shadow 0.3s, border 0.3s;
+      margin-top: 1em;
+      position: relative;
+      overflow: hidden;
+    }
+    .casting-btn:hover {
+      box-shadow: 0 0 44px #ffcb00ee;
+      border-color: #00ffd0;
+    }
+    .casting-success {
+      color: #00ffd0;
+      font-family: var(--font-accent);
+      font-size: 1.1em;
+      margin-top: 0.6em;
+    }
+    /* Анимация rgb фона */
+    .rgb-bg {
+      position: fixed;
+      top:0;left:0;width:100vw;height:100vh;
+      pointer-events: none;
+      z-index: -1;
+      opacity: 0.3;
+      background: var(--main-rgb);
+      background-size: 800% 800%;
+      animation: rgbMoveBg 18s linear infinite;
+      filter: blur(80px);
+    }
+    @keyframes rgbMoveBg {
+      0% {background-position: 0% 0%;}
+      50% {background-position: 100% 100%;}
+      100% {background-position: 0% 0%;}
+    }
+    /* Вход */
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+      margin-top: 2em;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .login-input {
+      padding: 0.7em 1em;
+      font-size: 1em;
+      border-radius: 12px;
+      border: var(--card-border);
+      background: rgba(24,24,36,0.97);
+      color: #fff;
+      font-family: var(--font-main);
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    .login-input:focus {
+      border-color: #00ffd0;
+      box-shadow: 0 0 12px #00ffd0cc;
+    }
+    .login-btn {
+      font-family: var(--font-accent);
+      font-size: 1.1em;
+      color: #fff;
+      background: var(--main-rgb);
+      background-size: 300% 300%;
+      border: 2px solid #ff00cc;
+      border-radius: 14px;
+      padding: 0.8em 2em;
+      cursor: pointer;
+      box-shadow: 0 0 24px #ff00cc88;
+      transition: box-shadow 0.3s, border 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .login-btn:hover {
+      box-shadow: 0 0 44px #0099ffcc;
+      border-color: #00ffd0;
+    }
+    .login-success {
+      color: #00ffd0;
+      font-family: var(--font-accent);
+      font-size: 1.1em;
+      margin-top: 0.6em;
+    }
+    /* Мелкие */
+    .hide {display: none;}
+    @media (max-width: 600px) {
+      section {padding: 1em;}
+      .bio-img {width: 120px; height: 120px;}
+      .title {font-size: 2em;}
+      .subtitle {font-size: 1em;}
+    }
+  </style>
 </head>
 <body>
-  <h1>Добро пожаловать на тестовую страницу GitHub Pages!</h1>
-  <p>Ваш сайт работает 👍</p>
+  <div class="rgb-bg"></div>
+  <header>
+    <h1 class="title">MINOR</h1>
+    <div class="subtitle">Блогер • 200k YouTube • УГП Универ глазами подростка</div>
+    <nav>
+      <button class="nav-btn active" data-tab="main">Главная</button>
+      <button class="nav-btn" data-tab="socials">Соц сети</button>
+      <button class="nav-btn" data-tab="casting">Кастинг</button>
+      <button class="nav-btn" data-tab="login">Вход</button>
+    </nav>
+  </header>
+  <!-- Главная -->
+  <section id="main" class="active">
+    <img src="minor.png" alt="Minor" class="bio-img">
+    <h2>Биография</h2>
+    <div class="bio">
+      Minor — российский блогер, ведущий YouTube-канал с более чем 200&nbsp;тысячами подписчиков. 
+      Известен как главный герой проекта “УГП Универ глазами подростка”, где раскрывает студенческую жизнь и показывает университет изнутри глазами современных молодых людей. 
+      <br><br>
+      Minor не просто контент-мейкер — он вдохновляет подростков на развитие, делится лайфхаками, юмором и мотивацией. 
+      Его видео — это микс драйва, искренности и настоящих эмоций.
+    </div>
+  </section>
+  <!-- Соц сети -->
+  <section id="socials">
+    <h2>Соц сети</h2>
+    <div class="socials">
+      <a class="social-btn" href="https://youtube.com/" target="_blank"><img src="https://img.icons8.com/color/48/youtube-play.png" alt="" width="24">YouTube</a>
+      <a class="social-btn" href="https://t.me/" target="_blank"><img src="https://img.icons8.com/color/48/telegram-app.png" alt="" width="24">Telegram</a>
+      <a class="social-btn" href="https://vk.com/" target="_blank"><img src="https://img.icons8.com/color/48/vk-com.png" alt="" width="24">VK</a>
+      <a class="social-btn" href="https://instagram.com/" target="_blank"><img src="https://img.icons8.com/color/48/instagram-new.png" alt="" width="24">Instagram</a>
+    </div>
+  </section>
+  <!-- Кастинг -->
+  <section id="casting">
+    <h2>Кастинг в проект</h2>
+    <form class="casting-form" id="castingForm">
+      <label class="casting-q">Твой никнейм</label>
+      <input type="text" class="casting-input" name="nickname" required>
+
+      <label class="casting-q">Твой email</label>
+      <input type="email" class="casting-input" name="email" required>
+
+      <label class="casting-q">Почему именно ты должен попасть в проект?</label>
+      <textarea class="casting-textarea" name="about" rows="3" required></textarea>
+
+      <label class="casting-q">Какие темы тебе интересны для съёмок?</label>
+      <input type="text" class="casting-input" name="topics">
+
+      <button type="submit" class="casting-btn">Отправить заявку</button>
+      <div id="castingSuccess" class="casting-success hide">Спасибо! Ваша заявка отправлена.</div>
+    </form>
+  </section>
+  <!-- Вход -->
+  <section id="login">
+    <h2>Вход</h2>
+    <form class="login-form" id="loginForm">
+      <input type="email" class="login-input" name="email" placeholder="Email" required>
+      <input type="password" class="login-input" name="password" placeholder="Пароль" required>
+      <button type="submit" class="login-btn">Войти</button>
+      <div id="loginSuccess" class="login-success hide">Вход выполнен!</div>
+    </form>
+  </section>
+  <script>
+    // Навигация по вкладкам
+    const navBtns = document.querySelectorAll('.nav-btn');
+    const sections = document.querySelectorAll('section');
+    navBtns.forEach(btn => btn.addEventListener('click', () => {
+      navBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      sections.forEach(sec => sec.classList.remove('active'));
+      document.getElementById(btn.dataset.tab).classList.add('active');
+    }));
+
+    // Кастинг форма: имитация отправки
+    document.getElementById('castingForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      // Сохраняем "данные" в localStorage
+      const data = {
+        nickname: this.nickname.value,
+        email: this.email.value,
+        about: this.about.value,
+        topics: this.topics.value
+      };
+      let castings = JSON.parse(localStorage.getItem('castings') || '[]');
+      castings.push(data);
+      localStorage.setItem('castings', JSON.stringify(castings));
+      // Показываем успех
+      document.getElementById('castingSuccess').classList.remove('hide');
+      setTimeout(()=>document.getElementById('castingSuccess').classList.add('hide'), 3000);
+      this.reset();
+      // имитация отправки на почту
+      // В реальном проекте тут отправка через backend
+    });
+
+    // Вход: эмуляция
+    document.getElementById('loginForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      // Проверка "аккаунта" в localStorage
+      let email = this.email.value, pass = this.password.value;
+      let castings = JSON.parse(localStorage.getItem('castings') || '[]');
+      let user = castings.find(u=>u.email===email);
+      if(user) {
+        document.getElementById('loginSuccess').classList.remove('hide');
+        setTimeout(()=>document.getElementById('loginSuccess').classList.add('hide'), 2000);
+        this.reset();
+      } else {
+        alert('Аккаунт не найден. Сначала отправьте заявку на кастинг.');
+      }
+    });
+  </script>
 </body>
 </html>
